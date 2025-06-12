@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>INNOVATE-EU Startup Survey</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+            color: white;
+            padding: 40px 30px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .form-container {
+            padding: 40px 30px;
+        }
+
+        .section {
+            margin-bottom: 40px;
+            padding: 30px;
+            background: #f8fafc;
+            border-radius: 12px;
+            border-left: 4px solid #4f46e5;
+        }
+
+        .section h2 {
+            color: #4f46e5;
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: #374151;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid #e5e7eb;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            background: white;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #4f46e5;
+            box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .checkbox-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 10px;
+        }
+
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .checkbox-item input[type="checkbox"] {
+            width: auto;
+            margin: 0;
+        }
+
+        .radio-group {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .radio-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .radio-item input[type="radio"] {
+            width: auto;
+            margin: 0;
+        }
+
+        .funding-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .consent-section {
+            background: #fef3c7;
+            border: 2px solid #f59e0b;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 30px;
+        }
+
+        .consent-section h3 {
+            color: #92400e;
+            margin-bottom: 15px;
+        }
+
+        .submit-btn {
+            background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+            color: white;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 8px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(79, 70, 229, 0.3);
+        }
+
+        .required {
+            color: #ef4444;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                margin: 10px;
+                border-radius: 10px;
+            }
+            
+            .header {
+                padding: 30px 20px;
+            }
+            
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .form-container {
+                padding: 30px 20px;
+            }
+            
+            .section {
+                padding: 20px;
+            }
+            
+            .funding-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>INNOVATE-EU Startup Survey</h1>
+            <p>Semi-structured Interview for Startups - Help us understand your funding challenges and needs</p>
+        </div>
+
+        <div class="form-container">
+            <!-- Introduction Section -->
+            <div class="section">
+                <h2>About This Survey</h2>
+                <p>The INNOVATE-EU project, funded by the European Union's Horizon Europe Framework Program for Research and Innovation 2021-2027, aims to overcome the innovation divide between European regions and strengthen European start-ups through interconnected and inclusive innovation ecosystems.</p>
+                <br>
+                <p>This survey focuses on building connections between different European regions, specifically Aragón (Spain), Baden-Württemberg (Germany), Latvia, Lithuania, and Northeast Romania. The estimated time for completion is approximately 45 minutes.</p>
+            </div>
+
+            <!-- Consent Section -->
+            <div class="consent-section">
+                <h3>Data Protection and Consent</h3>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="consent" name="consent" value="yes">
+                    <label for="consent">I agree to have my name, position, and organization mentioned in the regional reports for the purpose of sharing useful information.</label>
+                </div>
+                <p style="margin-top: 10px; font-size: 14px; color: #92400e;">Please read the Data Protection Notice before proceeding.</p>
+            </div>
+
+            <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+                <!-- General Information Section -->
+                <div class="section">
+                    <h2>General Information</h2>
+                    
+                    <div class="form-group">
+                        <label for="company_intro">Brief introduction to your startup (name, industry, and core business activity) <span class="required">*</span></label>
+                        <textarea id="company_intro" name="company_intro" required placeholder="Please provide a brief overview of your startup..."></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="company_name">Name of the company <span class="required">*</span></label>
+                        <input type="text" id="company_name" name="company_name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="incorporated">Incorporated or not <span class="required">*</span></label>
+                        <select id="incorporated" name="incorporated" required>
+                            <option value="">Select...</option>
+                            <option value="yes">Yes, incorporated</option>
+                            <option value="no">No, not incorporated</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="company_id">Company ID (if incorporated)</label>
+                        <input type="text" id="company_id" name="company_id">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="founding_year">Founding year <span class="required">*</span></label>
+                        <input type="number" id="founding_year" name="founding_year" min="1900" max="2024" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="num_founders">Number of founders <span class="required">*</span></label>
+                        <input type="number" id="num_founders" name="num_founders" min="1" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="female_founders">Number of female founders</label>
+                        <input type="number" id="female_founders" name="female_founders" min="0">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="nace_code">Main activity code (NACE classification)</label>
+                        <input type="text" id="nace_code" name="nace_code" placeholder="e.g., 62.01">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="technology">Technology <span class="required">*</span></label>
+                        <select id="technology" name="technology" required>
+                            <option value="">Select...</option>
+                            <option value="medtech">MedTech</option>
+                            <option value="greentech">GreenTech</option>
+                            <option value="agritech">AgriTech</option>
+                            <option value="ict">ICT</option>
+                            <option value="food">Food</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="startup_stage">What stage is your startup currently in? <span class="required">*</span></label>
+                        <select id="startup_stage" name="startup_stage" required>
+                            <option value="">Select...</option>
+                            <option value="pre-seed">Pre-seed</option>
+                            <option value="seed">Seed</option>
+                            <option value="early-growth">Early growth</option>
+                            <option value="scaling">Scaling</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Funding Structure Section -->
+                <div class="section">
+                    <h2>Current Funding Structure</h2>
+                    <p>Please provide amounts in EUR (leave blank if not applicable)</p>
+                    
+                    <div class="funding-grid">
+                        <div class="form-group">
+                            <label for="own_investments">Own investments (bootstrapped)</label>
+                            <input type="number" id="own_investments" name="own_investments" placeholder="Amount in EUR">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="public_subsidies">Public subsidies or grants</label>
+                            <input type="number" id="public_subsidies" name="public_subsidies" placeholder="Amount in EUR">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="angel_investment">Angel investment</label>
+                            <input type="number" id="angel_investment" name="angel_investment" placeholder="Amount in EUR">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="vc_seed">VC investment Seed</label>
+                            <input type="number" id="vc_seed" name="vc_seed" placeholder="Amount in EUR">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="vc_series_a">VC investment Series A</label>
+                            <input type="number" id="vc_series_a" name="vc_series_a" placeholder="Amount in EUR">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="vc_series_b">VC investment Series B</label>
+                            <input type="number" id="vc_series_b" name="vc_series_b" placeholder="Amount in EUR">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="vc_series_c">VC investment Series C</label>
+                            <input type="number" id="vc_series_c" name="vc_series_c" placeholder="Amount in EUR">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="previous_investment">Have you previously secured any form of investment? If yes, what type and amount?</label>
+                        <textarea id="previous_investment" name="previous_investment" placeholder="Please describe any previous investments..."></textarea>
+                    </div>
+                </div>
+
+                <!-- Business Model Section -->
+                <div class="section">
+                    <h2>Business Model and Market Position</h2>
+                    
+                    <div class="form-group">
+                        <label for="value_proposition">What is your startup's value proposition? How does it differentiate from competitors? What is your main USP? <span class="required">*</span></label>
+                        <textarea id="value_proposition" name="value_proposition" required placeholder="Describe your unique value proposition..."></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="revenue_streams">What are your primary revenue streams? <span class="required">*</span></label>
+                        <textarea id="revenue_streams" name="revenue_streams" required placeholder="Describe your main revenue sources..."></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="main_customers">Who are your main customers? <span class="required">*</span></label>
+                        <div class="checkbox-group">
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="b2b" name="customers" value="B2B">
+                                <label for="b2b">B2B (Business to Business)</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="b2c" name="customers" value="B2C">
+                                <label for="b2c">B2C (Business to Consumer)</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="b2g" name="customers" value="B2G">
+                                <label for="b2g">B2G (Business to Government)</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="scaling_challenges">What challenges do you currently face in scaling your business? (multiple answers can be chosen)</label>
+                        <div class="checkbox-group">
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="market_access" name="challenges" value="Access to markets">
+                                <label for="market_access">Access to the markets</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="qualified_staff" name="challenges" value="Qualified staff">
+                                <label for="qualified_staff">Qualified staff</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="innovation" name="challenges" value="Innovation">
+                                <label for="innovation">Innovation</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="business_financing" name="challenges" value="Business financing">
+                                <label for="business_financing">Business financing</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="management_knowledge" name="challenges" value="Management knowledge">
+                                <label for="management_knowledge">Management knowledge</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="strategy" name="challenges" value="Strategy">
+                                <label for="strategy">Strategy</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="regulation" name="challenges" value="Regulation">
+                                <label for="regulation">Regulation</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="taxes" name="challenges" value="Taxes">
+                                <label for="taxes">Taxes</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="other_challenges" name="challenges" value="Other">
+                                <label for="other_challenges">Other</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Funding Challenges Section -->
+                <div class="section">
+                    <h2>Funding Challenges and Needs</h2>
+                    
+                    <div class="form-group">
+                        <label for="validation_strategies">What were the actions or strategies that helped you in your validation/founding process by now?</label>
+                        <textarea id="validation_strategies" name="validation_strategies" placeholder="Describe the strategies that helped in your validation process..."></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="funding_obstacles">What are the biggest obstacles your startup faces in obtaining funding? <span class="required">*</span></label>
+                        <textarea id="funding_obstacles" name="funding_obstacles" required placeholder="e.g., investor interest, regulatory hurdles, market validation, etc."></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="government_grants_difficulties">Have you faced any difficulties in accessing government grants or subsidies?</label>
+                        <textarea id="government_grants_difficulties" name="government_grants_difficulties" placeholder="Describe any difficulties you've encountered..."></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="funding_types_interest">What types of funding are you most interested in? Why? <span class="required">*</span></label>
+                        <textarea id="funding_types_interest" name="funding_types_interest" required placeholder="e.g., equity financing, debt financing, crowdfunding, etc."></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="vc_angel_engagement">Have you engaged with venture capital firms or angel investors? What feedback have you received?</label>
+                        <textarea id="vc_angel_engagement" name="vc_angel_engagement" placeholder="Describe your experience with VCs or angel investors..."></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="missing_support">What financial resources or support mechanisms do you think are missing for startups in your sector?</label>
+                        <textarea id="missing_support" name="missing_support" placeholder="Describe what support mechanisms are missing..."></textarea>
+                    </div>
+                </div>
+
+                <!-- Regulatory and Market Section -->
+                <div class="section">
+                    <h2>Regulatory and Market Considerations</h2>
+                    
+                    <div class="form-group">
+                        <label for="regulatory_challenges">Are there specific regulatory challenges that impact your ability to secure funding?</label>
+                        <textarea id="regulatory_challenges" name="regulatory_challenges" placeholder="Describe any regulatory challenges..."></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="investor_understanding">Do you think investors understand the unique needs and risks of your sector? Why or why not?</label>
+                        <textarea id="investor_understanding" name="investor_understanding" placeholder="Share your thoughts on investor understanding..."></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="government_policy_role">What role does government policy play in your funding efforts? Are there policies that could be improved to support startups like yours?</label>
+                        <textarea id="government_policy_role" name="government_policy_role" placeholder="Describe the role of government policy..."></textarea>
+                    </div>
+                </div>
+
+                <!-- Future Outlook Section -->
+                <div class="section">
+                    <h2>Future Outlook</h2>
+                    
+                    <div class="form-group">
+                        <label for="future_vision">Where do you see your startup in the next 3-5 years? What are your key growth milestones? <span class="required">*</span></label>
+                        <textarea id="future_vision" name="future_vision" required placeholder="Describe your vision and key milestones..."></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="financial_support_needed">What kind of financial support or investor guidance would help you achieve these milestones?</label>
+                        <textarea id="financial_support_needed" name="financial_support_needed" placeholder="Describe the support you need..."></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="advice_new_startups">What advice would you give to new startups entering your sector regarding financing?</label>
+                        <textarea id="advice_new_startups" name="advice_new_startups" placeholder="Share your advice for new startups..."></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="european_connections">What factors could make European connections more valuable?</label>
+                        <textarea id="european_connections" name="european_connections" placeholder="Describe factors that could enhance European connections..."></textarea>
+                    </div>
+                </div>
+
+                <!-- Female/Minority Founder Section -->
+                <div class="section">
+                    <h2>Specific Needs of Female/Minority Founders (Optional)</h2>
+                    <p style="margin-bottom: 20px; font-style: italic;">Please answer this section only if applicable to your situation.</p>
+                    
+                    <div class="form-group">
+                        <label for="gender_challenges">Have you faced any gender-specific challenges in launching or growing your business?</label>
+                        <textarea id="gender_challenges" name="gender_challenges" placeholder="Describe any gender-specific challenges..."></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="minority_challenges">Have you faced any minority-specific challenges in launching or growing your business?</label>
+                        <textarea id="minority_challenges" name="minority_challenges" placeholder="Describe any minority-specific challenges..."></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="equal_access_funding">Do you feel you have equal access to funding and investment opportunities?</label>
+                        <div class="radio-group">
+                            <div class="radio-item">
+                                <input type="radio" id="equal_access_yes" name="equal_access_funding" value="yes">
+                                <label for="equal_access_yes">Yes</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="equal_access_no" name="equal_access_funding" value="no">
+                                <label for="equal_access_no">No</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="equal_access_unsure" name="equal_access_funding" value="unsure">
+                                <label for="equal_access_unsure">Unsure</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="funding_difficulties_minority">Have you encountered difficulties securing funding as a female/minority founder?</label>
+                        <textarea id="funding_difficulties_minority" name="funding_difficulties_minority" placeholder="Describe any difficulties encountered..."></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="support_networks">Are you part of any female-founder or minority networks or support groups?</label>
+                        <textarea id="support_networks" name="support_networks" placeholder="Describe your involvement in support networks..."></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="work_life_balance">How do you balance running a startup with personal and family responsibilities?</label>
+                        <textarea id="work_life_balance" name="work_life_balance" placeholder="Describe your approach to work-life balance..."></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="support_systems">Do you feel there are enough support systems in place to help female entrepreneurs with work-life integration?</label>
+                        <div class="radio-group">
+                            <div class="radio-item">
+                                <input type="radio" id="support_systems_yes" name="support_systems" value="yes">
+                                <label for="support_systems_yes">Yes</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="support_systems_no" name="support_systems" value="no">
+                                <label for="support_systems_no">No</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="support_systems_partially" name="support_systems" value="partially">
+                                <label for="support_systems_partially">Partially</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hidden field for Formspree -->
+                <input type="hidden" name="_subject" value="INNOVATE-EU Startup Survey Submission">
+                <input type="hidden" name="_next" value="https://your-website.com/thank-you.html">
+
+                <button type="submit" class="submit-btn">Submit Survey</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Form validation and enhancement
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.querySelector('form');
+            const submitBtn = document.querySelector('.submit-btn');
+            
+            // Add smooth scrolling to form sections
+            const sections = document.querySelectorAll('.section');
+            sections.forEach((section, index) => {
+                section.style.opacity = '0';
+                section.style.transform = 'translateY(20px)';
+                section.style.transition = 'all 0.6s ease';
+                
+                setTimeout(() => {
+                    section.style.opacity = '1';
+                    section.style.transform = 'translateY(0)';
+                }, index * 100);
+            });
+
+            // Form submission handling
+            form.addEventListener('submit', function(e) {
+                submitBtn.innerHTML = 'Submitting...';
+                submitBtn.disabled = true;
+                
+                // Basic validation for required fields
+                const requiredFields = form.querySelectorAll('[required]');
+                let isValid = true;
+                
+                requiredFields.forEach(field => {
+                    if (!field.value.trim()) {
+                        isValid = false;
+                        field.style.borderColor = '#ef4444';
+                    } else {
+                        field.style.borderColor = '#e5e7eb';
+                    }
+                });
+                
+                if (!isValid) {
+                    e.preventDefault();
+                    submitBtn.innerHTML = 'Submit Survey';
+                    submitBtn.disabled = false;
+                    alert('Please fill in all required fields.');
+                    return;
+                }
+            });
+
+            // Add focus effects to form elements
+            const formElements = document.querySelectorAll('input, select, textarea');
+            formElements.forEach(element => {
+                element.addEventListener('focus', function() {
+                    this.parentElement.style.transform = 'scale(1.02)';
+                    this.parentElement.style.transition = 'transform 0.2s ease';
+                });
+                
+                element.addEventListener('blur', function() {
+                    this.parentElement.style.transform = 'scale(1)';
+                });
+            });
+        });
+    </script>
+</body>
+</html>
+
